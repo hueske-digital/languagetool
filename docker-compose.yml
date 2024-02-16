@@ -1,0 +1,31 @@
+version: "3.5"
+
+services:
+  app:
+    image: meyay/languagetool:latest
+    restart: unless-stopped
+    cap_drop:
+      - ALL
+    cap_add:
+      - CAP_SETUID
+      - CAP_SETGID
+    security_opt:
+      - no-new-privileges
+    environment:
+      download_ngrams_for_langs: de,en
+      langtool_languageModel: /ngrams
+      langtool_fasttextModel: /fasttext/lid.176.bin
+    volumes:
+      - ./ngrams:/ngrams
+      - ./fasttext:/fasttext
+    networks:
+      proxy_apps:
+    logging:
+      driver: none
+    labels:
+      backups: "false"
+
+networks:
+  proxy_apps:
+    name: proxy_apps
+    external: true
