@@ -22,8 +22,6 @@ services:
       proxy_apps:
     logging:
       driver: none
-    labels:
-      backups: "false"
 
 networks:
   proxy_apps:
