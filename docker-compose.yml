@@ -13,17 +13,13 @@ services:
       - no-new-privileges
     environment:
       download_ngrams_for_langs: de,en
-      langtool_languageModel: /ngrams
-      langtool_fasttextModel: /fasttext/lid.176.bin
     volumes:
       - app_ngrams:/ngrams
-      - app_fasttext:/fasttext
     networks:
       proxy_apps:
 
 volumes:
   app_ngrams:
-  app_fasttext:
 
 networks:
   proxy_apps:
