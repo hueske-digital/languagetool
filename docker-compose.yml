@@ -16,12 +16,14 @@ services:
       langtool_languageModel: /ngrams
       langtool_fasttextModel: /fasttext/lid.176.bin
     volumes:
-      - ./ngrams:/ngrams
-      - ./fasttext:/fasttext
+      - app_ngrams:/ngrams
+      - app_fasttext:/fasttext
     networks:
       proxy_apps:
-    logging:
-      driver: none
+
+volumes:
+  app_ngrams:
+  app_fasttext:
 
 networks:
   proxy_apps:
